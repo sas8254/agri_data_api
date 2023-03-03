@@ -22,12 +22,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/data", async (req, res) => {
+  let skip = 0;
+  if (req.query) {
+    skip = req.query.skip;
+  }
   try {
-    const agridata = await AgriData.find({});
+    const agridata = await AgriData.find({}).limit(10).skip(skip);
     res.send(agridata);
   } catch (e) {
     res.status(500).send(e.message);
   }
+  console.log(req.query);
 });
 
 app.post("/data", async (req, res) => {

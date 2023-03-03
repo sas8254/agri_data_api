@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const AgriData = require("./model/agriData");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -14,7 +17,7 @@ const seedDB = async () => {
   await AgriData.deleteMany({});
   for (let i = 0; i < 20; i++) {
     data = new AgriData({
-      amp: Math.random(),
+      amp: `${i}`,
       h1: Math.random(),
       h2: Math.random(),
       mp1: Math.random(),
