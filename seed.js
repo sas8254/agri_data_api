@@ -17,6 +17,7 @@ const seedDB = async () => {
   await AgriData.deleteMany({});
   for (let i = 0; i < 20; i++) {
     data = new AgriData({
+      ah: Math.random(),
       amp: `${i}`,
       h1: Math.random(),
       h2: Math.random(),
@@ -24,6 +25,7 @@ const seedDB = async () => {
       mp2: Math.random(),
       t1: Math.random(),
       t2: Math.random(),
+      th: Math.random(),
     });
     await data.save();
   }

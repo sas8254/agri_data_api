@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const AgriData = new Schema(
   {
+    ah: String,
     amp: String,
     h1: String,
     h2: String,
@@ -10,6 +11,7 @@ const AgriData = new Schema(
     mp2: String,
     t1: String,
     t2: String,
+    th: String,
   },
   { timestamps: true }
 );
