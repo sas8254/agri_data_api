@@ -27,12 +27,14 @@ app.get("/data", async (req, res) => {
     skip = req.query.skip;
   }
   try {
-    const agridata = await AgriData.find({}).limit(10).skip(skip);
+    const agridata = await AgriData.find({})
+      .limit(10)
+      .sort({ createdAt: -1 })
+      .skip(skip);
     res.send(agridata);
   } catch (e) {
     res.status(500).send(e.message);
   }
-  console.log(req.query);
 });
 
 app.post("/data", async (req, res) => {
